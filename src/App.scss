@@ -222,7 +222,7 @@ body {
 
 .show-rules {
   position: absolute;
-  right: 20%;
+  right: 25%;
   bottom: 2%;
   color: #fff;
   border: 2px solid #fff;
@@ -321,6 +321,6 @@ body {
   }
 
   .show-rules {
-    bottom: 2%;
+    bottom: 2% !important;
   }
 }
