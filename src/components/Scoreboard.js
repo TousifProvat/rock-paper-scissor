@@ -1,6 +1,8 @@
 import React, { useContext } from 'react';
-import gameTitle from '../assets/logo.svg';
 import { GlobalContext } from '../context/Context';
+
+// svg
+import gameTitle from '../assets/logo-bonus.svg';
 
 export default function Scoreboard() {
   const { score } = useContext(GlobalContext);

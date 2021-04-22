@@ -35,15 +35,23 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 
 .overlay {
   width: 100%;
   height: 100vh;
+  display: none;
   position: absolute;
   left: 0;
   top: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 98;
+}
+
+.overlay.active {
+  display: block;
 }
 
 .rules-modal {
@@ -95,7 +103,7 @@ body {
     text-align: center;
     background-color: #fff;
     padding: 0.8rem 3rem;
-    border-radius: 1rem;
+    border-radius: 10px;
     .score-text {
       color: $score-text;
       font-weight: 300;
@@ -112,8 +120,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   box-shadow: inset 0px -9px 2px 0px rgba(0, 0, 0, 0.36);
   cursor: pointer;
@@ -122,8 +130,8 @@ body {
     transform: scale(1.1);
   }
   .inner-circle {
-    width: 160px;
-    height: 160px;
+    width: 110px;
+    height: 110px;
     background-color: white;
     border-radius: 50%;
     display: flex;
@@ -131,35 +139,43 @@ body {
     justify-content: center;
     box-shadow: inset 0px 10px 2px 0px rgba(0, 0, 0, 0.2);
     .icon {
-      width: 80px;
+      width: 55px;
     }
   }
 }
 
 .dice-controller {
-  position: absolute;
-  top: 55%;
-  left: 50%;
-  transform: translate(-50%, -10%);
+  position: relative;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  .controller {
+  }
   .dice {
     position: absolute;
   }
   .paper {
-    left: -20%;
-    top: -30%;
+    top: 12%;
+    right: -18%;
   }
   .scissor {
-    right: -20%;
-    top: -30%;
+    top: -25%;
   }
 
   .rock {
-    bottom: -10%;
-    right: 50%;
-    transform: translateX(50%);
+    bottom: -20%;
+    right: 0%;
+  }
+
+  .lizard {
+    bottom: -20%;
+    left: 0%;
+  }
+
+  .spock {
+    top: 12%;
+    left: -18%;
   }
 }
 
@@ -167,7 +183,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 50%;
   height: 70vh;
   margin: 0 auto;
 
@@ -175,6 +190,14 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    .dice {
+      width: 150px;
+      height: 150px;
+      .inner-circle {
+        width: 115px;
+        height: 115px;
+      }
+    }
 
     .blank {
       background-image: transparent;
@@ -210,9 +233,9 @@ body {
 
     .play-again {
       font-size: 1rem;
-      color: rgb(182, 42, 42);
+      color: $dark-text;
       background-color: #fff;
-      font-weight: 500;
+      font-weight: 600;
       padding: 1rem 0;
       border-radius: 10px;
       border: none;
@@ -222,9 +245,6 @@ body {
 }
 
 .show-rules {
-  position: absolute;
-  right: 25%;
-  bottom: 2%;
   color: #fff;
   border: 2px solid #fff;
   padding: 0.7rem 2rem;
@@ -248,9 +268,11 @@ body {
   .dice {
     width: 150px;
     height: 150px;
+    box-shadow: inset 0px -6px 2px 0px rgba(0, 0, 0, 0.36);
     .inner-circle {
-      width: 120px;
-      height: 120px;
+      width: 110px;
+      height: 110px;
+      box-shadow: inset 0px 7px 2px 0px rgba(0, 0, 0, 0.2);
       .icon {
         width: 50px;
       }
@@ -262,20 +284,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    .controller {
-      width: 90%;
-      min-width: 250px;
-    }
-
-    .rock {
-      bottom: -20%;
-    }
-    .paper {
-      left: -15%;
-    }
-    .scissor {
-      right: -15%;
-    }
   }
 
   .show-rules {
@@ -283,20 +291,16 @@ body {
   }
 
   .dice-field {
-    width: 100%;
-    height: 55vh;
     .diced {
-      width: 200px;
       flex-direction: column-reverse;
+      margin: 0 1rem;
     }
     .game-result {
       position: absolute;
-      bottom: 13%;
-      left: 50%;
-      transform: translate(-50%, 15%);
+      transform: translate(0%, 200%);
       margin: 0;
       h2 {
-        font-size: 2rem;
+        font-size: 3rem;
       }
       .play-again {
         font-size: 0.8rem;
@@ -306,18 +310,77 @@ body {
 }
 
 @media screen and (max-width: 450px) {
+  .container {
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: space-around;
+  }
   .rules-modal {
     width: 100%;
     height: 100vh;
     border-radius: 0;
-    justify-content: space-around;
+    justify-content: space-evenly;
     left: 0;
     top: 0;
     bottom: 0;
     transform: translate(0%, 0%);
   }
+  .dice {
+    width: 120px;
+    height: 120px;
+    box-shadow: inset 0px -6px 2px 0px rgba(0, 0, 0, 0.36);
+    .inner-circle {
+      width: 95px;
+      height: 95px;
+      box-shadow: inset 0px 7px 2px 0px rgba(0, 0, 0, 0.2);
+      .icon {
+        width: 50px;
+      }
+    }
+  }
+
+  .dice-controller {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .controller {
+      width: 80%;
+    }
+
+    .rock {
+      bottom: -15%;
+      right: 8%;
+    }
+    .paper {
+      right: 0%;
+    }
+    .spock {
+      left: 0%;
+    }
+    .lizard {
+      bottom: -15%;
+      left: 8%;
+    }
+  }
+
+  .dice-field {
+    align-items: flex-start;
+    height: 50vh;
+    width: 100%;
+    .diced {
+      span {
+        font-size: 1rem;
+      }
+    }
+
+    .game-result {
+      top: 50%;
+      transform: translate(0%, 60%);
+    }
+  }
 
   .show-rules {
-    bottom: 2% !important;
+    margin-bottom: 2rem;
   }
 }

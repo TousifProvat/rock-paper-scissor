@@ -25,7 +25,7 @@ export const Provider = ({ children }) => {
   };
 
   const getBotDice = () => {
-    const dices = ['rock', 'paper', 'scissor'];
+    const dices = ['rock', 'paper', 'scissor', 'lizard', 'spock'];
     const number = Math.floor(Math.random() * dices.length);
     dispatch({
       type: 'LOADING',
@@ -37,7 +37,7 @@ export const Provider = ({ children }) => {
       payload: dices[number],
     });
 
-    setInterval(() => dispatch({ type: 'LOADING', payload: false }), 1000);
+    setInterval(() => dispatch({ type: 'LOADING', payload: false }), 500);
   };
 
   const winner = () => {
@@ -65,11 +65,27 @@ export const Provider = ({ children }) => {
   };
 
   const setWinner = (mydice, botdice) => {
-    if (mydice === 'rock' && botdice === 'scissor') {
+    if (mydice === 'rock' && (botdice === 'scissor' || botdice === 'lizard')) {
       winner();
-    } else if (mydice === 'paper' && botdice === 'rock') {
+    } else if (
+      mydice === 'lizard' &&
+      (botdice === 'spock' || botdice === 'paper')
+    ) {
       winner();
-    } else if (mydice === 'scissor' && botdice === 'paper') {
+    } else if (
+      mydice === 'spock' &&
+      (botdice === 'scissor' || botdice === 'rock')
+    ) {
+      winner();
+    } else if (
+      mydice === 'scissor' &&
+      (botdice === 'paper' || botdice === 'lizard')
+    ) {
+      winner();
+    } else if (
+      mydice === 'paper' &&
+      (botdice === 'rock' || botdice === 'spock')
+    ) {
       winner();
     } else if (mydice === botdice) {
       draw();
@@ -77,13 +93,6 @@ export const Provider = ({ children }) => {
       loser();
     }
   };
-
-  // const setModal = (bool) => {
-  //   dispatch({
-  //     type: 'MODAL',
-  //     payload: bool,
-  //   });
-  // };
 
   return (
     <GlobalContext.Provider

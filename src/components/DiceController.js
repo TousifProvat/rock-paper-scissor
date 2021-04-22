@@ -1,38 +1,24 @@
 import React from 'react';
-import Controller from '../assets/bg-triangle.svg';
-import Dice from './dice/Dice';
 
-// icon
+// svg
+import Controller from '../assets/bg-pentagon.svg';
 
-import Rock from '../assets/icon-rock.svg';
-import Paper from '../assets/icon-paper.svg';
-import Scissor from '../assets/icon-scissors.svg';
+// components
+import Rock from './dice/Rock';
+import Paper from './dice/Paper';
+import Scissor from './dice/Scissor';
+import Lizard from './dice/Lizard';
+import Spock from './dice/Spock';
 
 export default function DiceController({ onClick }) {
   return (
     <div className="dice-controller">
       <img src={Controller} alt="controller" className="controller" />
-      <Dice
-        gradient1={'hsl(349, 71%, 52%)'}
-        gradient2={'hsl(349, 70%, 56%)'}
-        icon={Rock}
-        customClass={'rock'}
-        onClick={onClick}
-      />
-      <Dice
-        gradient1={'hsl(230, 89%, 62%)'}
-        gradient2={'hsl(230, 89%, 65%)'}
-        icon={Paper}
-        customClass={'paper'}
-        onClick={onClick}
-      />
-      <Dice
-        gradient1={'hsl(39, 89%, 49%)'}
-        gradient2={'hsl(40, 84%, 53%)'}
-        icon={Scissor}
-        customClass={'scissor'}
-        onClick={onClick}
-      />
+      <Rock onClick={onClick} />
+      <Paper onClick={onClick} />
+      <Scissor onClick={onClick} />
+      <Lizard onClick={onClick} />
+      <Spock onClick={onClick} />
     </div>
   );
 }

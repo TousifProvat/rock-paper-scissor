@@ -1,7 +1,7 @@
 import React from 'react';
 
 // svgs
-import rules from '../assets/image-rules.svg';
+import rules from '../assets/image-rules-bonus.svg';
 import close from '../assets/icon-close.svg';
 
 export default function Rules({ onClick }) {

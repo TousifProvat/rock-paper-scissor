@@ -11,7 +11,7 @@ import Rules from './components/Rules';
 import { GlobalContext } from './context/Context';
 
 function App() {
-  const { getMyDice } = useContext(GlobalContext);
+  const { getMyDice, getBotDice } = useContext(GlobalContext);
 
   let [start, setStart] = useState(false);
   let [modal, setModal] = useState(true);
@@ -20,6 +20,7 @@ function App() {
   const onClick = (item) => {
     setStart((start = !start));
     getMyDice(item);
+    getBotDice();
   };
 
   const modalActive = () => {
@@ -28,7 +29,7 @@ function App() {
 
   return (
     <div className="container">
-      <div className={modal ? 'overlay' : ''}></div>
+      <div className={modal ? 'overlay active' : 'overlay'}></div>
       <Scoreboard />
       {!start ? (
         <DiceController onClick={onClick} />
