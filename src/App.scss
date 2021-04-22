@@ -279,14 +279,9 @@ body {
   }
 
   .dice-controller {
-    top: 45%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  .show-rules {
-    right: 10%;
   }
 
   .dice-field {
@@ -375,11 +370,7 @@ body {
 
     .game-result {
       top: 50%;
-      transform: translate(0%, 60%);
+      transform: translate(0%, 75%);
     }
-  }
-
-  .show-rules {
-    margin-bottom: 0.5rem;
   }
 }
