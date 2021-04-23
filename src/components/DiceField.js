@@ -18,12 +18,17 @@ export default function DiceField({ onClick }) {
 
   useEffect(() => {
     setWinner(myDice, botDice);
-  }, [myDice]);
+    // eslint-disable-next-line
+  }, [myDice, botDice]);
 
   return (
     <div className="dice-field">
       <div
-        className={winner === 'me' ? 'my-dice diced winner' : 'my-dice diced'}
+        className={
+          winner === 'me' && loading === false
+            ? 'my-dice diced winner'
+            : 'my-dice diced'
+        }
       >
         <span>YOU PICKED</span>
         {myDice === 'rock' && <Rock />}
@@ -45,7 +50,11 @@ export default function DiceField({ onClick }) {
         </div>
       )}
       <div
-        className={winner === 'bot' ? 'my-dice diced winner' : 'my-dice diced'}
+        className={
+          winner === 'bot' && loading === false
+            ? 'my-dice diced winner'
+            : 'my-dice diced'
+        }
       >
         <span>THE HOUSE PICKED</span>
         {loading ? (

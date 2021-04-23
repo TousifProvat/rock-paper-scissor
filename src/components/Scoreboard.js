@@ -6,6 +6,7 @@ import gameTitle from '../assets/logo-bonus.svg';
 
 export default function Scoreboard() {
   const { score } = useContext(GlobalContext);
+
   return (
     <div className="score-board">
       <div className="game-title">
