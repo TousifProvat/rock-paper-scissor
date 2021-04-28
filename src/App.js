@@ -14,7 +14,7 @@ function App() {
   const { getMyDice, getBotDice } = useContext(GlobalContext);
 
   let [start, setStart] = useState(false);
-  let [modal, setModal] = useState(true);
+  let [modal, setModal] = useState(false);
 
   // when I click a dice
   const onClick = (item) => {
